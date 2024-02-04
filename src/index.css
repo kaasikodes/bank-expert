@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* div{
+  color:#065897;
+} */
+:root {
+  --background: #ffffff;
+  --text-color: #252526;
+  --primary: #ff6647;
+  --neutral: #ff221e;
+  --card: #f6f7fb;
+  --accent: #3a3a3a;
+  --sideBar: #f6f7fb;
+  --sideBarIcon: #ffffff;
+  --scrollBg: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] {
+  --background: #1a202c;
+  --text-color: #ffffff;
+  --card: #011627;
+  --accent: rgba(247, 249, 252, 0.7);
+  --sideBar: #1a202c;
+  --sideBarIcon: #011627;
+  --scrollBg: #808080;
+}
+
+[color-theme="#d69a00"] {
+  --primary: #d69a00;
+}
+
+[color-theme="#01966b"] {
+  --primary: #01966b;
+}
+
+[color-theme="#349ce4"] {
+  --primary: #349ce4;
+}
+
+[color-theme="#6e55ff"] {
+  --primary: #6e55ff;
+}
+
+body {
+  font-family: "Sen", sans-serif;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior-y: none;
+}
+
+a:hover {
+  color: inherit;
+}
+
+/* Fix for antd btn, conflicting with tailwind */
+/* TODO: Find a more dynamic fix that will allow antd theme config styles to be used */
+.ant-btn-primary {
+  background-color: var(--primary);
+}
