@@ -19,7 +19,7 @@ const ConnectWallet = () => {
       <SignInButton
         children={
           <h1 className="px-3 text-lg relative -top-44 py-2 rounded-md border border-primary text-primary hover:text-accent hover:border-accent  font-medium bg-transparent transition ease-in-out duration-500  tracking-wider">
-            Please Connect Wallet
+            Please Connect Wallet on Sui Mainnet
           </h1>
         }
       />

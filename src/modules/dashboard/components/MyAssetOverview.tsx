@@ -61,7 +61,7 @@ const MyAssetCard: React.FC<{ item: TToken; refresh?: boolean }> = ({
   });
 
   return (
-    <Card>
+    <Card className="shadow-sm dark:shadow-sm dark:shadow-slate-800">
       <Skeleton loading={loading} paragraph={{ rows: 2 }}>
         <div className="space-y-4">
           <div className="flex items-center">

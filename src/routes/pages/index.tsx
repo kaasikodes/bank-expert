@@ -1,14 +1,16 @@
+import ComingSoon from "components/generic/ComingSoon";
+import NotFound from "components/generic/NotFound";
 import Dashboard from "modules/dashboard";
-import Reports from "modules/reports";
 import { ConnectWallet } from "modules/wallets";
 import { appRoutePath } from "routes/paths";
 import { TRouteData } from "routes/types";
 
 export const appPages: TRouteData[] = [
   {
-    element: <div />,
+    element: <NotFound />,
     path: appRoutePath.notFound,
     title: "Not Found",
+    category: ["doesnt-require-wallet-connection"],
   },
   {
     element: <ConnectWallet />,
@@ -27,18 +29,18 @@ export const appPages: TRouteData[] = [
     title: "Dashboard",
   },
   {
-    element: <Reports />,
+    element: <ComingSoon />,
     path: appRoutePath.report,
     title: "Report",
     category: ["doesnt-require-wallet-connection"],
   },
   {
-    element: <div />,
+    element: <ComingSoon />,
     path: appRoutePath.news,
     title: "News",
   },
   {
-    element: <div />,
+    element: <ComingSoon />,
     path: appRoutePath.wallet,
     title: "Wallets",
   },

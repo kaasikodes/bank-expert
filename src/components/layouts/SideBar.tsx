@@ -44,9 +44,7 @@ const SideBar: React.FC<{
                     key: item.link,
                     label: <NavLink to={item.link}>{item.label}</NavLink>,
                     icon: <NavLink to={item.link}>{item.icon}</NavLink>,
-                    className: "",
                     style: { marginBottom: "12px" },
-                    disabled: item.disabled,
                   })
                 )}
                 defaultSelectedKeys={matches.map((match) => match.pathname)}

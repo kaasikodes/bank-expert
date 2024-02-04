@@ -16,10 +16,10 @@ export const AppProviders: React.FC<{ children: React.ReactNode }> = ({
       <EthosConnectProvider
         ethosConfiguration={{
           hideEmailSignIn: true,
-          chain: Chain.SUI_DEVNET,
-          network: "https://fullnode.devnet.sui.io:443",
-          // chain: Chain.SUI_MAINNET,
-          // network: "https://fullnode.mainnet.sui.io:443",
+          // chain: Chain.SUI_DEVNET,
+          // network: "https://fullnode.devnet.sui.io:443",
+          chain: Chain.SUI_MAINNET,
+          network: "https://fullnode.mainnet.sui.io:443",
           // chain: Chain.SUI_TESTNET,
           // network: "https://fullnode.testnet.sui.io:443",
         }}

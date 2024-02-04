@@ -25,6 +25,7 @@ export const TopBar: React.FC<{
           type="text"
           size="large"
           icon={<SettingIcon className="h-5 w-5 lg:h-6 lg:w-6" />}
+          disabled
         />
         <Button
           type="text"
@@ -32,6 +33,7 @@ export const TopBar: React.FC<{
           icon={
             <NotificationIcon isNotified className="h-5 w-5 lg:h-6 lg:w-6" />
           }
+          disabled
         />
         <UserProfileDropdown />
       </div>
