@@ -1,7 +1,7 @@
 import React from "react";
-import { IImageProps } from "types";
+import { IIconProps } from "types";
 
-const SearchIcon: React.FC<IImageProps> = (props) => {
+const SearchIcon: React.FC<IIconProps> = (props) => {
   return (
     <svg
       width="19"
