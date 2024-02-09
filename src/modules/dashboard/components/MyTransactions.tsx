@@ -2,12 +2,15 @@ import { Line } from "@ant-design/plots";
 import { Typography, theme, Skeleton, Button, Empty } from "antd";
 import useHandleColorTheme from "hooks/theme/useHandleColorTheme";
 import useGetMyTransactions from "../hooks/useGetMyTransactions";
+import { useGetTokenBalances } from "hooks/useGetTokenBalances";
 
 const { useToken } = theme;
 
 const MyTransactions = () => {
   const { token } = useToken();
   const { mode } = useHandleColorTheme();
+  const { data: balances } = useGetTokenBalances();
+  console.log(balances, "balances");
   const { data, loading, handleRefresh } = useGetMyTransactions();
   const config = {
     data,

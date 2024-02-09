@@ -12,7 +12,7 @@ const AppRoutes = () => {
       children: appPages.map((page) => ({
         path: page.path,
         element: (
-          <MiddlewareOrganizer categories={page.category}>
+          <MiddlewareOrganizer categories={page.category} disabled>
             <>{page.element}</>
           </MiddlewareOrganizer>
         ),

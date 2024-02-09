@@ -3,6 +3,8 @@ import { ConfigProvider, theme } from "antd";
 import useHandleColorTheme from "hooks/theme/useHandleColorTheme";
 import ThemeContextProvider from "./ThemeContextProvider";
 import { Chain, EthosConnectProvider } from "ethos-connect";
+import ReactQueryProvider from "./ReactQueryProvider";
+import GlobalContextProvider from "./GlobalContextProvider";
 export { ThemeContextProvider };
 
 export const AppProviders: React.FC<{ children: React.ReactNode }> = ({
@@ -18,10 +20,10 @@ export const AppProviders: React.FC<{ children: React.ReactNode }> = ({
           hideEmailSignIn: true,
           // chain: Chain.SUI_DEVNET,
           // network: "https://fullnode.devnet.sui.io:443",
-          chain: Chain.SUI_MAINNET,
-          network: "https://fullnode.mainnet.sui.io:443",
-          // chain: Chain.SUI_TESTNET,
-          // network: "https://fullnode.testnet.sui.io:443",
+          // chain: Chain.SUI_MAINNET,
+          // network: "https://fullnode.mainnet.sui.io:443",
+          chain: Chain.SUI_TESTNET,
+          network: "https://fullnode.testnet.sui.io:443",
         }}
       >
         <ConfigProvider
@@ -67,7 +69,9 @@ export const AppProviders: React.FC<{ children: React.ReactNode }> = ({
                 }
           }
         >
-          {children}
+          <GlobalContextProvider>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+          </GlobalContextProvider>
         </ConfigProvider>
       </EthosConnectProvider>
     </div>

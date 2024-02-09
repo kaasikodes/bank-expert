@@ -1,3 +1,4 @@
+import { ETHOS_WALLET_ADDRESS } from "constants";
 import { ethos } from "ethos-connect";
 import { useEffect, useState } from "react";
 type TLineData = {
@@ -21,7 +22,7 @@ const useGetMyTransactions = () => {
   const [refresh, setRefesh] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<TLineData[]>([]);
-  const { wallet, client } = ethos.useWallet();
+  const { client } = ethos.useWallet();
   const handleRefresh = () => {
     setRefesh((prev) => !prev);
   };
@@ -30,16 +31,15 @@ const useGetMyTransactions = () => {
   }, [refresh]);
 
   const asyncClient = async (): Promise<TLineData[]> => {
-    if (!wallet) return [];
     setLoading(true);
 
     const coins = await client?.getCoins({
-      owner: wallet.address,
+      owner: ETHOS_WALLET_ADDRESS,
       coinType: "0x2::sui::SUI",
     });
     const transactionInfo = await client?.queryTransactionBlocks({
       filter: {
-        ToAddress: wallet.address,
+        ToAddress: ETHOS_WALLET_ADDRESS,
         // FromAddress: wallet.address,
       },
       options: {

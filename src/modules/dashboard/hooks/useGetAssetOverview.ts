@@ -1,3 +1,4 @@
+import { ETHOS_WALLET_ADDRESS } from "constants";
 import { ethos } from "ethos-connect";
 import { useState, useEffect } from "react";
 type TProps = { coinType: string };
@@ -5,7 +6,7 @@ const useGetAssetOverview = (props: TProps) => {
   const [data, setData] = useState<{ balance: number }>({ balance: 0 });
   const [refresh, setRefesh] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { wallet, client } = ethos.useWallet();
+  const { client } = ethos.useWallet();
   useEffect(() => {
     asyncClient(props);
   }, [refresh]);
@@ -14,10 +15,9 @@ const useGetAssetOverview = (props: TProps) => {
   };
 
   const asyncClient = async ({ coinType }: TProps) => {
-    if (!wallet) return [];
     setLoading(true);
     const coin = await client?.getBalance({
-      owner: wallet.address,
+      owner: ETHOS_WALLET_ADDRESS,
       coinType,
     });
 
