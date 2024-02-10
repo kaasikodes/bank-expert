@@ -4,9 +4,14 @@ import { ESupportedChains } from "types";
 
 const supportedChains: ESupportedChains[] = [
   ESupportedChains.ETHEREUM_MAINNET,
-  ESupportedChains.POLYGONZKEVM_MAINNET,
+  ESupportedChains.POLYGON_MAINNET,
+  ESupportedChains.ASTAR_MAINNET,
+  ESupportedChains.OPTIMISM_MAINNET,
   ESupportedChains.APTOS_MAINNET,
   ESupportedChains.SUI_MAINNET,
+  ESupportedChains.SOLANA_MAINNET,
+  ESupportedChains.SOLANA_DEVNET,
+  ESupportedChains.STARKNET_MAINET,
 ];
 const ChainSelector = () => {
   const { selectedChain, handleChainSelection } = useGetGlobalInfo();

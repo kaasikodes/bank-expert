@@ -1,28 +1,28 @@
 // Setup: npm install alchemy-sdk
-import { Network } from "alchemy-sdk";
 import { TTokenBalance, UserChainInterface } from "./BaseRepository";
-import { AlchemyRPC } from "lib/rpc-endpoints/alchemy";
+import { SolanaRPC } from "lib/rpc-endpoints/solana";
 
 export class SolanaRepository implements UserChainInterface {
   address;
-  constructor(_address: string) {
+  endpoint;
+  constructor(_address: string, _endpoint: string) {
     this.address = _address;
+    this.endpoint = _endpoint;
   }
   getNativeTokenBalance = () => "";
   getTokenBalances = async () => {
-    const alchemy = new AlchemyRPC(Network.ETH_MAINNET);
-    const balances = await alchemy.rpc?.core.getTokenBalances(this.address);
-
-    const balancesFormatted = balances.tokenBalances.map(
-      (balance): TTokenBalance => {
+    const rpc = new SolanaRPC(this.endpoint);
+    const accounts = await rpc.getTokenAccountsByOwner(this.address);
+    console.log("solana", accounts);
+    const balancesFormatted =
+      accounts.data?.result.value.map((acc): TTokenBalance => {
         return {
-          tokenName: balance.contractAddress,
-          tokenBalance: balance.tokenBalance ?? "",
-          tokenAddress: balance.contractAddress,
+          tokenName: acc.account.data.program,
+          tokenBalance: acc.account.data.parsed.info.tokenAmount.uiAmountString,
+          tokenAddress: acc.pubkey,
         };
-      }
-    );
-    return { data: balancesFormatted, total: balancesFormatted.length };
+      }) ?? [];
+    return { data: balancesFormatted, total: balancesFormatted?.length };
   };
   getTransactionHistory = () => [];
 }

@@ -2,8 +2,8 @@
 import { Network } from "alchemy-sdk";
 import { AlchemySupportedChainRepo } from "./BaseRepository";
 
-export class EthereumRepository extends AlchemySupportedChainRepo {
+export class OptimismRepository extends AlchemySupportedChainRepo {
   constructor(_address: string) {
-    super(_address, Network.ETH_MAINNET);
+    super(_address, Network.OPT_MAINNET);
   }
 }

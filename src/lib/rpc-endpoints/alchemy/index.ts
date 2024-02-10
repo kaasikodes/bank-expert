@@ -1,7 +1,8 @@
 import { Alchemy, Network } from "alchemy-sdk";
+import { ENV } from "constants/environment";
 
 export class AlchemyRPC {
-  private apiKey: string = "1iR2gmd_L28E4J4PLc5EL2FjRwnVocnO";
+  private apiKey: string = ENV.ALCHEMY_API_KEY;
   public rpc: Alchemy;
   constructor(network: Network) {
     this.rpc = new Alchemy({
