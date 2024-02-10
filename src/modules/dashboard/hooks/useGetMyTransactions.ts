@@ -1,4 +1,4 @@
-import { ETHOS_WALLET_ADDRESS } from "constants";
+import { ETHOS_WALLET_ADDRESS } from "_constants";
 import { ethos } from "ethos-connect";
 import { useEffect, useState } from "react";
 type TLineData = {

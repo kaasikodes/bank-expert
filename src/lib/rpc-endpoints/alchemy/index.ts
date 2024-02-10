@@ -1,5 +1,5 @@
 import { Alchemy, Network } from "alchemy-sdk";
-import { ENV } from "constants/environment";
+import { ENV } from "_constants/environment";
 
 export class AlchemyRPC {
   private apiKey: string = ENV.ALCHEMY_API_KEY;
