@@ -2,6 +2,7 @@ import ComingSoon from "components/generic/ComingSoon";
 import NotFound from "components/generic/NotFound";
 import Dashboard from "modules/dashboard";
 import { ConnectWallet } from "modules/wallets";
+import WalletContainer from "modules/wallets/WalletContainer";
 import { appRoutePath } from "routes/paths";
 import { TRouteData } from "routes/types";
 
@@ -40,7 +41,7 @@ export const appPages: TRouteData[] = [
     title: "News",
   },
   {
-    element: <ComingSoon />,
+    element: <WalletContainer />,
     path: appRoutePath.wallet,
     title: "Wallets",
   },
