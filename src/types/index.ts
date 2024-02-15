@@ -1,6 +1,6 @@
 export { type IImageProps, type IIconProps } from "./image";
 export { EThemePrimaryColor, type TThemeMode } from "./theme";
-
+export interface IDivProps extends React.HTMLAttributes<HTMLDivElement> {}
 export enum ESupportedChains {
   ETHEREUM_MAINNET = "Ethereum Mainnet",
   POLYGON_MAINNET = "Polygon Mainnet",

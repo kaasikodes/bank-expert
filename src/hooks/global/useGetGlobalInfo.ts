@@ -10,19 +10,23 @@ const useGetGlobalInfo = () => {
   }
   const {
     handleChainSelection,
-    handleUserWallets,
+    addUserWallets,
     handleWalletSelection,
     selectedChain,
     selectedWallet,
     userWallets,
+    editUserWallet,
+    deleteUserWallet,
   } = context;
   return {
     handleChainSelection,
-    handleUserWallets,
+    addUserWallets,
     handleWalletSelection,
     selectedChain,
     selectedWallet,
     userWallets,
+    editUserWallet,
+    deleteUserWallet,
   };
 };
 
