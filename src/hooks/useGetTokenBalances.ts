@@ -9,6 +9,7 @@ import {
   OptimismRepository,
   PolygonRepository,
   SolanaRepository,
+  SuiRepository,
 } from "repositories";
 
 export const QUERY_KEY_FOR_TOKEN_BALANCES = "token-balances";
@@ -41,6 +42,18 @@ const getData = async (props: {
       break;
     case ESupportedChains.APTOS_MAINNET:
       repo = new AptosRepository(address);
+      response = await repo.getTokenBalances();
+      break;
+    case ESupportedChains.SUI_MAINNET:
+      repo = new SuiRepository(address, "https://fullnode.mainnet.sui.io:443");
+      response = await repo.getTokenBalances();
+      break;
+    case ESupportedChains.SUI_DEVNET:
+      repo = new SuiRepository(address, "https://fullnode.devnet.sui.io:443");
+      response = await repo.getTokenBalances();
+      break;
+    case ESupportedChains.SUI_TESTNET:
+      repo = new SuiRepository(address, "https://fullnode.testnet.sui.io:443");
       response = await repo.getTokenBalances();
       break;
     case ESupportedChains.SOLANA_MAINNET:

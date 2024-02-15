@@ -7,7 +7,7 @@ const WalletsTable = () => {
 
   return (
     <Table
-      dataSource={userWallets}
+      dataSource={userWallets.map((item, i) => ({ ...item, key: i }))}
       columns={[
         { title: "Name", render: (_, item) => <span>{item.name}</span> },
         { title: "Address", render: (_, item) => <span>{item.address}</span> },

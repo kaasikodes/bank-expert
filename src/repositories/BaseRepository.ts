@@ -36,6 +36,7 @@ export abstract class AlchemySupportedChainRepo implements UserChainInterface {
         };
       }
     );
+    // TODO: Implement pagination for all requests, as the max amount of requests for now permitted by alchemy is 5
     balancesFormatted = await Promise.all(
       balancesFormatted
         .slice(0, 5)

@@ -2,6 +2,7 @@ import { Button, Form, Input, Modal } from "antd";
 import useGetGlobalInfo from "hooks/global/useGetGlobalInfo";
 import React from "react";
 
+// TODO: Refactor all wallet components to a components folder
 type TProps = {
   open: boolean;
   handleClose: () => void;

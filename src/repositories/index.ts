@@ -4,3 +4,4 @@ export { OptimismRepository } from "./OptimismRepository";
 export { AStarRepository } from "./AStarRepository";
 export { AptosRepository } from "./AptosRepository";
 export { SolanaRepository } from "./SolanaRepository";
+export { SuiRepository } from "./SuiRepository";

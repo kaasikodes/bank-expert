@@ -9,6 +9,8 @@ const supportedChains: ESupportedChains[] = [
   ESupportedChains.OPTIMISM_MAINNET,
   ESupportedChains.APTOS_MAINNET,
   ESupportedChains.SUI_MAINNET,
+  ESupportedChains.SUI_DEVNET,
+  ESupportedChains.SUI_TESTNET,
   ESupportedChains.SOLANA_MAINNET,
   ESupportedChains.SOLANA_DEVNET,
   ESupportedChains.STARKNET_MAINET,
