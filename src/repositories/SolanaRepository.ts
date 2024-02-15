@@ -1,27 +1,19 @@
 // Setup: npm install alchemy-sdk
-import { TTokenBalance, UserChainInterface } from "./BaseRepository";
-import { SolanaRPC } from "lib/rpc-endpoints/solana";
+import { UserChainInterface } from "./BaseRepository";
+import { SolanaRPC, TSolanaNetwork } from "lib/rpc-endpoints/solana";
 
 export class SolanaRepository implements UserChainInterface {
   address;
-  endpoint;
-  constructor(_address: string, _endpoint: string) {
+  network;
+  constructor(_address: string, _network: TSolanaNetwork) {
     this.address = _address;
-    this.endpoint = _endpoint;
+    this.network = _network;
   }
   getNativeTokenBalance = () => "";
   getTokenBalances = async () => {
-    const rpc = new SolanaRPC(this.endpoint);
+    const rpc = new SolanaRPC(this.network);
     const accounts = await rpc.getTokenAccountsByOwner(this.address);
-    console.log("solana", accounts);
-    const balancesFormatted =
-      accounts.data?.result.value.map((acc): TTokenBalance => {
-        return {
-          tokenName: acc.account.data.program,
-          tokenBalance: acc.account.data.parsed.info.tokenAmount.uiAmountString,
-          tokenAddress: acc.pubkey,
-        };
-      }) ?? [];
+    const balancesFormatted = accounts.data ?? [];
     return { data: balancesFormatted, total: balancesFormatted?.length };
   };
   getTransactionHistory = () => [];

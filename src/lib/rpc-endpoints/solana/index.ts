@@ -1,95 +1,41 @@
-import axios from "axios";
+import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
+import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { TTokenBalance } from "repositories/BaseRepository";
+import { generateHumanReadableCryptoBalance } from "lib/utils";
 
+export type TSolanaNetwork = "devnet" | "mainnet-beta" | "testnet";
 export class SolanaRPC {
-  endpoint: string;
-  constructor(_endpoint: string) {
-    this.endpoint = _endpoint;
+  network: TSolanaNetwork;
+  constructor(_network: TSolanaNetwork) {
+    this.network = _network;
   }
 
   getTokenAccountsByOwner = async (
     address: string
-  ): Promise<{ data?: TTokenAccountsByOwner }> => {
-    const url = this.endpoint;
+  ): Promise<{ data?: TTokenBalance[] }> => {
+    // connection
+    const connection = new Connection(clusterApiUrl(this.network), "confirmed");
 
-    const config = {
-      headers: {
-        Accept: "application/json",
-      },
-    };
-    const requestData = {
-      //   jsonrpc: "2.0",
-      //   id: 1,
-      method: "getTokenAccountsByOwner",
-      params: [
-        address,
-        {
-          //   mint: "3wyAj7Rt1TWVPZVteFJPLa26JmLvdb1CAKEFZm3NY75E",
-        },
-      ],
-    };
+    const owner = new PublicKey(address);
+    const response = await connection.getParsedTokenAccountsByOwner(owner, {
+      programId: TOKEN_PROGRAM_ID,
+    });
+    const balancesFormatted = await Promise.all(
+      response.value.map(async (accountInfo): Promise<TTokenBalance> => {
+        const formattedBalance = generateHumanReadableCryptoBalance(
+          accountInfo.account.data["parsed"]["info"]["tokenAmount"]["amount"],
+          accountInfo.account.data["parsed"]["info"]["tokenAmount"][
+            "decimals"
+          ] ?? undefined
+        );
 
-    const res = await axios.post(url, requestData, config);
-    const item: TTokenAccountsByOwner | null = res.data.data;
-    const data = item === null ? undefined : item;
-
-    return { data };
+        return {
+          tokenAddress: accountInfo.account.data["parsed"]["info"]["mint"],
+          tokenBalance: formattedBalance,
+          tokenName: "N/A ...",
+        };
+      })
+    );
+    return { data: balancesFormatted };
   };
-}
-
-type TTokenAccountsByOwner = {
-  jsonrpc: string;
-  result: Result;
-  id: number;
-};
-
-interface Result {
-  context: Context;
-  value: Value[];
-}
-
-interface Value {
-  account: Account;
-  pubkey: string;
-}
-
-interface Account {
-  data: Data;
-  executable: boolean;
-  lamports: number;
-  owner: string;
-  rentEpoch: number;
-  space: number;
-}
-
-interface Data {
-  program: string;
-  parsed: Parsed;
-  space: number;
-}
-
-interface Parsed {
-  accountType: string;
-  info: Info;
-  type: string;
-}
-
-interface Info {
-  tokenAmount: TokenAmount;
-  delegate: string;
-  delegatedAmount: TokenAmount;
-  state: string;
-  isNative: boolean;
-  mint: string;
-  owner: string;
-}
-
-interface TokenAmount {
-  amount: string;
-  decimals: number;
-  uiAmount: number;
-  uiAmountString: string;
-}
-
-interface Context {
-  slot: number;
 }

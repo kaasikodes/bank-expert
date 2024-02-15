@@ -22,9 +22,9 @@ const MyAssets = () => {
   return (
     <>
       <Table
-        dataSource={data?.data.map((item) => ({
+        dataSource={data?.data.map((item, i) => ({
           ...item,
-          key: item.tokenAddress,
+          key: item.tokenAddress + i.toString(),
         }))}
         columns={columns}
         loading={isLoading}

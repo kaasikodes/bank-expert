@@ -12,6 +12,7 @@ const supportedChains: ESupportedChains[] = [
   ESupportedChains.SUI_DEVNET,
   ESupportedChains.SUI_TESTNET,
   ESupportedChains.SOLANA_MAINNET,
+  ESupportedChains.SOLANA_TESTNET,
   ESupportedChains.SOLANA_DEVNET,
   ESupportedChains.STARKNET_MAINET,
 ];

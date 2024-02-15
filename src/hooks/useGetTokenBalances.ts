@@ -57,14 +57,15 @@ const getData = async (props: {
       response = await repo.getTokenBalances();
       break;
     case ESupportedChains.SOLANA_MAINNET:
-      repo = new SolanaRepository(
-        address,
-        "https://api.mainnet-beta.solana.com"
-      );
+      repo = new SolanaRepository(address, "mainnet-beta");
+      response = await repo.getTokenBalances();
+      break;
+    case ESupportedChains.SOLANA_TESTNET:
+      repo = new SolanaRepository(address, "testnet");
       response = await repo.getTokenBalances();
       break;
     case ESupportedChains.SOLANA_DEVNET:
-      repo = new SolanaRepository(address, "https://api.devnet.solana.com");
+      repo = new SolanaRepository(address, "devnet");
       response = await repo.getTokenBalances();
       break;
 

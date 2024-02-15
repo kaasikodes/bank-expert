@@ -12,6 +12,7 @@ export enum ESupportedChains {
   SUI_TESTNET = "Sui Testnet",
   SOLANA_MAINNET = "Solana Mainnet",
   SOLANA_DEVNET = "Solana Devnet",
+  SOLANA_TESTNET = "Solana Testnet",
   STARKNET_MAINET = "Starknet Mainnet",
 }
 
