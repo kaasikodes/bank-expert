@@ -13,6 +13,7 @@
     "@ant-design/plots": "^2.1.12",
     "@aptos-labs/ts-sdk": "^1.6.0",
     "@solana/spl-token": "^0.4.0",
+    "@solana/spl-type-length-value": "^0.1.0",
     "@solana/web3.js": "^1.90.0",
     "alchemy-sdk": "^3.1.2",
     "antd": "^5.13.3",
@@ -38,6 +39,7 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
+    "vite-plugin-node-polyfills": "^0.21.0",
     "vite-tsconfig-paths": "^4.3.1"
   }
 }
