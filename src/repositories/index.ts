@@ -5,3 +5,4 @@ export { AStarRepository } from "./AStarRepository";
 export { AptosRepository } from "./AptosRepository";
 export { SolanaRepository } from "./SolanaRepository";
 export { SuiRepository } from "./SuiRepository";
+export { BitcoinRepository } from "./BitcoinRepository";

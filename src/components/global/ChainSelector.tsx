@@ -4,6 +4,7 @@ import { ESupportedChains } from "types";
 
 const supportedChains: ESupportedChains[] = [
   ESupportedChains.ETHEREUM_MAINNET,
+  ESupportedChains.BITCOIN_MAINNET,
   ESupportedChains.POLYGON_MAINNET,
   ESupportedChains.ASTAR_MAINNET,
   ESupportedChains.OPTIMISM_MAINNET,

@@ -3,6 +3,7 @@ export { EThemePrimaryColor, type TThemeMode } from "./theme";
 export interface IDivProps extends React.HTMLAttributes<HTMLDivElement> {}
 export enum ESupportedChains {
   ETHEREUM_MAINNET = "Ethereum Mainnet",
+  BITCOIN_MAINNET = "Bitcoin",
   POLYGON_MAINNET = "Polygon Mainnet",
   OPTIMISM_MAINNET = "Optimism Mainnet",
   ASTAR_MAINNET = "AStar Mainnet",

@@ -1,11 +1,10 @@
+import { ThemeConfig, theme } from "antd";
 import { BiHome, BiNews, BiNotepad, BiWallet } from "react-icons/bi";
 import { appRoutePath } from "routes/paths";
+import { TThemeMode, EThemePrimaryColor } from "types";
 
 export const APP_NAME = "BankXpert";
-export const ETHOS_WALLET_ADDRESS =
-  "0x03a198fbed30e508d56df01ea7f7b5b5b05a08ff7c64994d20f4d7ee109f23bd"; //sui
-// export const ETHOS_WALLET_ADDRESS =
-//   "0x3ad292fd737b6de130c8f6ad451091ae6a719800fcc4a0ef6430252d59f6c7b4"; // ethos
+
 export const SIDE_BAR_LINKS = [
   {
     label: "Dashboard",
@@ -33,3 +32,42 @@ export const SIDE_BAR_LINKS = [
     disabled: true,
   },
 ];
+
+export const antdThemeConfig = (
+  mode: TThemeMode,
+  color: EThemePrimaryColor
+): ThemeConfig => {
+  return mode === "dark"
+    ? {
+        algorithm: theme?.darkAlgorithm,
+        // cssVar: true,
+
+        token: {
+          ...theme.defaultConfig.token,
+          // fontFamily: "Sen, sans-serif",
+          // colorPrimary: color,
+        },
+        components: {
+          Layout: {
+            // bodyBg: "#065897",
+            bodyBg: "#141414",
+          },
+        },
+      }
+    : {
+        // cssVar: true,
+
+        token: {
+          ...theme.defaultConfig.token,
+          fontFamily: "Sen, sans-serif",
+          colorPrimary: color,
+        },
+        components: {
+          Layout: {
+            bodyBg: "#fff",
+            siderBg: "#F6F7FB",
+            headerBg: "#fff",
+          },
+        },
+      };
+};

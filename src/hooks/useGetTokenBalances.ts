@@ -5,6 +5,7 @@ import { ESupportedChains } from "types";
 import {
   AStarRepository,
   AptosRepository,
+  BitcoinRepository,
   EthereumRepository,
   OptimismRepository,
   PolygonRepository,
@@ -66,6 +67,11 @@ const getData = async (props: {
       break;
     case ESupportedChains.SOLANA_DEVNET:
       repo = new SolanaRepository(address, "devnet");
+      response = await repo.getTokenBalances();
+      break;
+    case ESupportedChains.BITCOIN_MAINNET:
+      console.log("why ...");
+      repo = new BitcoinRepository(address);
       response = await repo.getTokenBalances();
       break;
 
