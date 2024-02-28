@@ -2,7 +2,7 @@ import { Divider, Layout, Menu, Typography } from "antd";
 import { MenuItemType } from "antd/es/menu/hooks/useItems";
 import { AppLogo } from "components/icons";
 import ThemeSwitcher from "components/theme/ThemeSwitcher";
-import { APP_NAME, SIDE_BAR_LINKS } from "constants";
+import { APP_NAME, SIDE_BAR_LINKS } from "_constants";
 import { NavLink, useMatches } from "react-router-dom";
 import ToggleSideBar from "./ToggleSideBar";
 

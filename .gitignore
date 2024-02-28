@@ -1,6 +1,7 @@
 # developer helper files
 IMPLEMENTATION_GUIDE.tsx
-
+.env
+.env.local
 
 # Logs
 logs
